@@ -2,16 +2,19 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Requests\Traits\TraitRulesforContacts;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateContactsRequest extends FormRequest
 {
+    use TraitRulesforContacts;
+
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -19,10 +22,10 @@ class UpdateContactsRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    /*public function rules(): array
     {
         return [
             //
         ];
-    }
+    }*/
 }
