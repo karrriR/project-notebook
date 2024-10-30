@@ -17,4 +17,8 @@ class Contacts extends Model
         'birth_date',
         'photo_path',
     ];
+
+    protected $dates = [
+        'birth_date',
+    ];
 }

@@ -22,11 +22,13 @@ class ContactsResource extends JsonResource
                 'company' => $this->company,
                 'phone' => $this->phone,
                 'email' => $this->email,
-                'birth_date' => $this->birth_date ? $this->birth_date->format('Y-m-d') : null,
+                'birth_date' => $this->birth_date instanceof \DateTimeInterface
+                    ? $this->birth_date->format('Y-m-d')
+                    : $this->birth_date,
                 'photo_path' => $this->photo_path,
             ],
             'links' => [
-                'self' => route('contacts.show', ['contact' => $this->id]),
+                'self' => route('notebook.show', ['notebook' => $this->id]),
             ],
         ];
     }
