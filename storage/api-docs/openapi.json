@@ -1,0 +1,186 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Documentation for Notebook",
+        "contact": {
+            "name": "Карьгина Регина",
+            "email": "regina@example.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/notebook/": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "Возвращает перечень всех контактов",
+                "operationId": "7901e17d85b57d35311b9c77c346a93d",
+                "responses": {
+                    "200": {
+                        "description": "Перечень контактов",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Контакт не найдена",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "Создает новый контакт",
+                "operationId": "8b29d9b2f4db035e4fcd4d19a41c896c",
+                "requestBody": {
+                    "description": "Данные для создания нового контакта",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Contact"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Контакт успешно создан",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/notebook/{notebook}/": {
+            "get": {
+                "summary": "Display the specified resource.",
+                "description": "Возвращает контакт по идентификатору",
+                "operationId": "138c7415fb5db6d49733ef2599bf2791",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/notebook"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Контакт",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Контакт не найдена",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Remove the specified resource from storage.",
+                "description": "Удаляет контакт по идентификатору",
+                "operationId": "be8457ff8f675fbd0a4808e7551a0901",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/notebook"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Контакт успешно удален",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update the specified resource in storage.",
+                "description": "Обновляет контакт по идентификатору",
+                "operationId": "5c8be468b8e793c6a281c39350342c3f",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/notebook"
+                    }
+                ],
+                "requestBody": {
+                    "description": "Данные для обновления контакта",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Contact"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Контакт успешно обновлен",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Contact": {
+                "properties": {
+                    "full_name": {
+                        "description": "Имя контакта",
+                        "type": "string"
+                    },
+                    "company": {
+                        "description": "Компания контакта",
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "Телефон контакта",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "Email контакта",
+                        "type": "string"
+                    },
+                    "birth_date": {
+                        "description": "Дата рождения контакта",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "photo_path": {
+                        "description": "Путь к фото контакта",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "parameters": {
+            "notebook": {
+                "name": "notebook",
+                "in": "path",
+                "description": "Первичный ключ"
+            }
+        }
+    }
+}
