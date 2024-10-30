@@ -16,7 +16,7 @@ class ContactsController extends Controller
     public function index()
     {
         $contacts = Contacts::paginate(5); // Получение списка контактов с постраничной навигацией
-        return new ContactsCollection($contacts); 
+        return new ContactsCollection($contacts);
     }
 
     /**
@@ -45,19 +45,21 @@ class ContactsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateContactsRequest $request, Contacts $contact)
+    public function update(UpdateContactsRequest $request, Contacts $notebook)
     {
         $data = $request->validated();
-        $contact->update($data);
+        // $notebook->update($data);
+        $notebook->fill($data);
+        $notebook->save();
         return response()->noContent(204);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Contacts $contact)
+    public function destroy(Contacts $notebook)
     {
-        $contact->delete();
+        $notebook->delete();
         return response()->noContent(204);
     }
 }

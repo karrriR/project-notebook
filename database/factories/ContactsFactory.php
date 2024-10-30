@@ -20,7 +20,7 @@ class ContactsFactory extends Factory
             'full_name' => $this->faker->name(),
             'company' => $this->faker->company(),
             'phone' => $this->faker->phoneNumber(),
-            'email' => $this->faker->unique()->safeEmail(),
+            'email' => $this->faker->safeEmail(),
             'birth_date' => $this->faker->optional()->date('Y-m-d'),
             'photo_path' => $this->faker->optional()->imageUrl(100, 100, 'people', true, 'Profile'),
         ];
